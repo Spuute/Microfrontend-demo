@@ -1,9 +1,44 @@
 ﻿@page "/"
 
-<PageTitle>Index</PageTitle>
+<PageTitle>Home</PageTitle>
 
-<h1>Hello, world!</h1>
+<h1 class="text-center">Microfrontend Demo</h1>
 
-Welcome to your new app.
+<p class="lead text-center">Welcome to to my demo of Microfrontends with Blazor WebAssembly!</p>
 
-<SurveyPrompt Title="How is Blazor working for you?" />
+
+<div class="row mt-5">
+    <div class="col-lg-4">
+        <div class="card text-center shadow" style="width: 18rem;">
+        <div class="card-body">
+            <h5 class="card-title">Card from Blazor App</h5>
+            <p class="card-text">The code for this card is coming from the Blazor WebAssembly application.</p>
+            <a href="#" class="btn btn-primary">Hello World</a>
+        </div>
+        </div>
+    </div>
+            @renderFragment
+    @* <div class="col-lg-4">
+        <EmployeeCard />
+    </div>
+    <div class="col-lg-4">
+        <JobCard />
+    </div> *@
+
+</div>
+
+@code {
+    public RenderFragment renderFragment { get; set; }
+    
+    protected override void OnInitialized()
+    {
+        renderFragment = (builder) => {
+            var seq = 0;
+
+            foreach (var Components in Collector.Cards){
+                builder.OpenComponent(seq++, Components);
+                builder.CloseComponent();
+            }
+        };
+    }
+}
