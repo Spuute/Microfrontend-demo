@@ -11,4 +11,9 @@
     <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly.DevServer" Version="6.0.1" PrivateAssets="all" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\Job.lib\Job.lib.csproj" />
+    <ProjectReference Include="..\Employee.lib\Employee.lib.csproj" />
+  </ItemGroup>
+
 </Project>
